@@ -1,36 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mackenzie.eleicao;
+package com.mackenzie;
 
-/**
- *
- * @author Gustavo
- */
-public class Eleitor {
-    
-    public String mtClasssificarEleitor(int mtInIdade){
-        
-        String mtOutClassificacao;
-              
-        if (mtInIdade >= 18 && mtInIdade < 70){
-            mtOutClassificacao = "Obrigatorio";
-        }
-        else if (mtInIdade >= 0 && mtInIdade <= 15){
-            mtOutClassificacao = "Nao permitido";
-        }
-        else if ((mtInIdade > 15 && mtInIdade <= 17) 
-                || (mtInIdade >= 70 && mtInIdade <= 130)){
-            mtOutClassificacao = "Facultativo";
-        }
-        else{
-            mtOutClassificacao = "Idade Invalida";
+public class TipoSangue {
+
+    // A pode doar para B?
+    public boolean podedoar(String A, String B) {
+
+        if (A.charAt(1) == B.charAt(1)) {
+
+            if (positivo(A) && positivo(B)) {
+                return true;
+            }
+
+            if (negativo(A)) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
-        return mtOutClassificacao;
-        
+        if (A.charAt(1) == 'O' && negativo(A)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    
+
+    public boolean positivo(String A) {
+        if (A.charAt(0) == '+') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean negativo(String A) {
+        if (A.charAt(0) == '-') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //commit teste
 }
